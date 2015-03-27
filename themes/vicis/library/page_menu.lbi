@@ -1,0 +1,8 @@
+
+<ul class="mainMenuWrapper">
+    <li class="ect-box-flex"><a href="{:url('index/index')}">{$lang.home}</a></li>
+    <li class="ect-box-flex"><a href="{:url('category/top_all')}">{$lang.category}</a></li>
+    <li class="ect-box-flex"><a href="javascript:openSearch();"><i class="ect-icon ect-icon-search"></i>{$lang.search}</a></li>
+    <li class="ect-box-flex"><a href="{:url('flow/cart')}">{$lang.shopping_cart}</a></li>
+    <li class="ect-box-flex"><a href="{:url('user/index')}">{$lang.user_center}</a></li>
+</ul>
