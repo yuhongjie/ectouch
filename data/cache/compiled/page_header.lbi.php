@@ -22,6 +22,8 @@
     />
     
     
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
     <link href="__TPL__/css/framework.css" rel="stylesheet" type="text/css" media="all"
     />
     <link href="__TPL__/css/colorbox.css" rel="stylesheet" type="text/css" media="all"

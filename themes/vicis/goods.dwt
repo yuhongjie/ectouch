@@ -99,83 +99,132 @@
       
       <div class="pageBreak"></div>
 
-      <div class="drop-downWrapper">
-        <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
-       <span class="drop-downText" data-label="选择口味">选择口味</span>
+     <!-- test -->
 
-        <div class="drop-downItemsWrapper"> 
-          <!-- {* 判断属性是复选还是单选 *} --> 
-          <!-- {if $spec.attr_type eq 1} --> 
-          <!-- {if $cfg.goodsattr_style eq 1} --> 
-          <!-- {foreach from=$spec.values item=value key=key} -->
-          <input type="hidden" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-          <span for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</span>
-          <!-- {/foreach} -->
-              <input type="hidden" name="spec_list" value="{$key}" />
+
+     <!--商品属性介绍-->
+       <!--商品描述-->
+       <!--商品评价-->
+       
+       <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+ 
+           <!-- <div class="goods-optionc">  -->
+            <div class="drop-downWrapper">
+             <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
+
+             <!-- {if $spec.name=="口味"} -->
+               <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
+               <div class="drop-downItemsWrapper"> 
+                 <!-- {* 判断属性是复选还是单选 *} --> 
+                 <!-- {if $spec.attr_type eq 1} --> 
+                 <!-- {if $cfg.goodsattr_style eq 1} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</label>
+                 <!-- {/foreach} -->
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {else} -->
+                 <select name="spec_{$spec_key}" onchange="changePrice()">
+                   <!-- {foreach from=$spec.values item=value key=key} -->
+                   <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
+                   <!-- {/foreach} -->
+                 </select>
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {/if} --> 
+                 <!-- {else} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}">{$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]</label>
+                 <!-- {/foreach} --> 
+                 <!-- {/if} --> 
+               </div>
+             </div>
+              <!-- {/if} -->
+             <!-- {/foreach} --> 
+
+
+            <div class="drop-downWrapper">
+             <!-- {foreach name=spec from=$specification item=spec key=spec_key} -->
+
+             <!-- {if $spec.name=="数量"} -->
+               <span class="drop-downText" data-label="{$spec.name}">{$spec.name}</span>
+               <div class="drop-downItemsWrapper"> 
+                 <!-- {* 判断属性是复选还是单选 *} --> 
+                 <!-- {if $spec.attr_type eq 1} --> 
+                 <!-- {if $cfg.goodsattr_style eq 1} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}" class="drop-downItem" data-value="">{$value.label}</label>
+                 <!-- {/foreach} -->
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {else} -->
+                 <select name="spec_{$spec_key}" onchange="changePrice()">
+                   <!-- {foreach from=$spec.values item=value key=key} -->
+                   <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
+                   <!-- {/foreach} -->
+                 </select>
+                 <input type="hidden" name="spec_list" value="{$key}" />
+                 <!-- {/if} --> 
+                 <!-- {else} --> 
+                 <!-- {foreach from=$spec.values item=value key=key} -->
+                 <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
+                 <label for="spec_value_{$value.id}">{$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]</label>
+                 <!-- {/foreach} --> 
+                 <!-- {/if} --> 
+               </div>
+             </div>
+              <!-- {/if} -->
+             <!-- {/foreach} --> 
+            
+
+            <div class="l-good-num goods-num"> 
+              <span class="l-numlabel pull-left">{$lang.number}：</span> 
+              <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+              <div class="input-group pull-left wrap">
+                <span class="input-group-addon sup" onClick="changePrice('1')">-</span>
+                <input type="text" class="form-contro form-num"  name="number" id="goods_number" autocomplete="off" value="1" onFocus="back_goods_number()"  onblur="changePrice('2')"/>
+                <span class="input-group-addon plus" onClick="changePrice('3')">+</span>
+              </div>
               <!-- {else} -->
-              <select name="spec_{$spec_key}" onchange="changePrice()">
-                <!-- {foreach from=$spec.values item=value key=key} -->
-                <option label="{$value.label}" value="{$value.id}">{$value.label} {if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if}{if $value.price neq 0}{$value.format_price}{/if}</option>
-                <!-- {/foreach} -->
-              </select>
-              <input type="hidden" name="spec_list" value="{$key}" />
-              <!-- {/if} --> 
-              <!-- {else} --> 
-              <!-- {foreach from=$spec.values item=value key=key} -->
-              <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" onclick="changePrice()" />
-              <label for="spec_value_{$value.id}">{$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]</label>
-              <!-- {/foreach} --> 
+              <input type="text" class="form-contro form-num" readonly value="{$goods.goods_number} "/>
               <!-- {/if} --> 
             </div>
-          </div>
-          <!-- {/foreach} --> 
 
-      <div class="drop-downWrapper"> <span class="drop-downText" data-label="选择数量">选择数量</span>
-        <div class="drop-downItemsWrapper">
-        <span class="drop-downItem" data-value="1">1</span>
-        <span class="drop-downItem" data-value="2">2</span>
-        <span class="drop-downItem" data-value="3">3</span>
-        <span class="drop-downItem" data-value="4">4</span>
-        <span class="drop-downItem" data-value="6">6</span>
-        <span class="drop-downItem" data-value="8">8</span>
-        <span class="drop-downItem" data-value="10">10</span> </div>
-        <input type="hidden" name="drop-downField" class="drop-downField" value="all">
-      </div>
+       </form>
+     </div>
+
+     <!-- test -->
+
+
+
+
+
+        <div class="pageContentWrapper">
+          <a href="javascript:addToCart_quick({$goods.goods_id})" class="singleProductPurchaseButton">(
+                <span id="ECS_GOODS_AMOUNT"></span>
+                ){$lang.buy_now}</a> 
+              <a href="javascript:void(0)" onClick="collect({$goods.goods_id})" id='ECS_COLLECT' class="singleProductPurchaseButton">添加到收藏</a> 
+              <!-- product info accordions start -->
+              <div class="accordionWrapper"> 
+                <!-- accordion item wrapper starts -->
+                <div class="accordionItemWrapper"> <a href="" class="accordionButton"><span class="accordionButtonIcon"></span><span class="accordionButtonTitle">详细信息</span></a>
+                  <div class="accordionContentWrapper">
+                  <p>{$goods.goods_desc}</p>
+                </div>
+                <!-- accordion item wrapper ends --> 
+              </div>
+              <!-- product info accordions end --> 
+            </div>
+            <!-- page content wrapper ends -->
+          </div>
       
 
-      <div class="goods-num"> <span class="pull-left">{$lang.number}：</span> 
-        <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
-        <div class="input-group pull-left wrap"><span class="input-group-addon sup" onClick="changePrice('1')">-</span>
-          <input type="text" class="form-contro form-num"  name="number" id="goods_number" autocomplete="off" value="1" onFocus="back_goods_number()"  onblur="changePrice('2')"/>
-          <span class="input-group-addon plus" onClick="changePrice('3')">+</span></div>
-        <!-- {else} -->
-        <input type="text" class="form-contro form-num" readonly value="{$goods.goods_number} "/>
-        <!-- {/if} --> 
+      <div class="footerDecoration"></div>
+        <!-- footer wrapper starts -->
+         <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+        <!-- footer wrapper ends --> 
+        <!-- page wrapper ends --> 
       </div>
-
-      <a href="javascript:addToCart_quick({$goods.goods_id})" class="singleProductPurchaseButton">(
-        {$goods.shop_price_formated} 
-        ){$lang.buy_now}</a> 
-      <a href="javascript:void(0)" onClick="collect({$goods.goods_id})" id='ECS_COLLECT' class="singleProductPurchaseButton">添加到收藏</a> 
-      <!-- product info accordions start -->
-      <div class="accordionWrapper"> 
-        <!-- accordion item wrapper starts -->
-        <div class="accordionItemWrapper"> <a href="" class="accordionButton"><span class="accordionButtonIcon"></span><span class="accordionButtonTitle">详细信息</span></a>
-          <div class="accordionContentWrapper">
-          <p>test test test关于提拉米苏的由来，有一个温馨的故事：二战时期，一个意大利士兵要出征了，可是家里已经什么都没有了</p>
-        </div>
-        <!-- accordion item wrapper ends --> 
-      </div>
-      <!-- product info accordions end --> 
-    </div>
-    <!-- page content wrapper ends -->
-    
-  </div>
-  <div class="footerDecoration"></div>
-    <!-- footer wrapper starts -->
-     <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
-    <!-- footer wrapper ends --> 
-    <!-- page wrapper ends --> 
 </div>
 <!-- website wrapper ends -->
 

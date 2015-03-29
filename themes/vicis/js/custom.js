@@ -354,8 +354,10 @@ jQuery(document).ready(function($){
 		adaptMainMenu();
 		
 		adaptPortfolio();
+
+		//liugu- 
 		
-		adaptSingleProductGallery();
+		// adaptSingleProductGallery();
 									
 	});
 	// window resize functions end

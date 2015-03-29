@@ -1,21 +1,21 @@
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<!-- website wrapper starts -->
+<?php echo $this->fetch('library/page_header.lbi'); ?>
+
 <div class="websiteWrapper"> 
-  <!-- page wrapper starts -->
+  
   <div class="pageWrapper blogPageWrapper"> 
-    <!-- main menu outer wrapper starts -->
+    
     <div class="mainMenuOuterWrapper"> 
-      <!-- main menu wrapper starts -->
-      <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem -->
-      <!-- main menu wrapper ends -->
+      
+      <?php echo $this->fetch('library/page_menu.lbi'); ?>
+      
       <div class="mainMenuBottomDecoration"></div>
     </div>
-    <!-- main menu outer wrapper ends --> 
+     
     
-   <!-- shopping cart wrapper start -->
+   
    <form id="shoppingCartWrapper" class="shoppingCartWrapper" action="#" method="post">
      <fieldset>
-       <!-- shopping cart product starts -->
+       
        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-1.jpg" class="shoppingCartProductImage" alt=""></a>
          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜点</a>
            <div class="shoppingCartProductButtonsWrapper">
@@ -23,9 +23,9 @@
              <span class="shoppingCartProductPrice">￥25</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
          </div>
        </div>
-       <!-- shopping cart product ends --> 
+        
        
-       <!-- shopping cart product starts -->
+       
        <div class="shoppingCartProductWrapper"> <a href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-2.jpg" class="shoppingCartProductImage" alt=""></a>
          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜点</a>
            <div class="shoppingCartProductButtonsWrapper">
@@ -33,9 +33,9 @@
              <span class="shoppingCartProductPrice">￥50</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
          </div>
        </div>
-       <!-- shopping cart product ends --> 
+        
        
-       <!-- shopping cart product starts -->
+       
        <div class="shoppingCartProductWrapper"> <a  href="singleProduct.html" class="shoppingCartProductImageWrapper"><img src="__TPL__/images/content/shoppingCartProductImage-3.jpg" class="shoppingCartProductImage" alt=""></a>
          <div class="shoppingCartProductInfoWrapper"> <a href="singleProduct.html" class="shoppingCartProductTitle">微茜甜点III</a>
            <div class="shoppingCartProductButtonsWrapper">
@@ -43,11 +43,11 @@
              <span class="shoppingCartProductPrice">￥110</span><a href="" class="shoppingCartRemoveProductButton"></a> </div>
          </div>
        </div>
-       <!-- shopping cart product ends --> 
+        
        
-       <!-- shopping cart info wrapper starts -->
+       
        <div class="shoppingCartInfoWrapper"> <span class="shoppingCartProductsNumber">购物车:3件产品</span> <span class="shoppingCartProductsTotal">总共: ￥185</span> </div>
-       <!-- shopping cart info wrapper ends -->
+       
        
        <div class="shoppingCartButtonsWrapper"><a href="" class="shoppingCartEmptyButton">清空购物车</a>
          <a href="" class="shoppingCartEmptyButton">更新购物车</a>
@@ -55,53 +55,53 @@
        </div>
      </fieldset>
    </form>
-   <!-- shopping cart wrapper ends --> 
     
-    <!-- header outer wrapper starts -->
+    
+    
     <div class="headerOuterWrapper">
       <div class="headerWrapper"> <a href="login.html" class="accountButton"></a><a href="" class="shoppingCartButton"></a><a href="" class="mainMenuButton"></a></div>
       <div class="headerDecoration"></div>
       
-      <!-- main logo starts --> 
+       
       <a href="" class="mainLogo"><img src="__TPL__/images/common/mainLogo.png" alt="" /></a> 
-      <!-- main logo ends --> 
+       
     </div>
-    <!-- header outer wrapper ends --> 
+     
     
-    <!-- blog posts wrapper starts -->
+    
     <div class="blogPostsWrapper">
       <div class="blogTitleWrapper">
         <div class="headerBreak headerBreakTitleBottom"></div>
         
-        <!-- page title starts -->
-        <h3 class="pageTitle">{$article.title}</h3>
-        <!-- page title ends --> 
+        
+        <h3 class="pageTitle"><?php echo $this->_var['article']['title']; ?></h3>
+         
       </div>
       
-      <!-- small blog post starts  -->
+      
       <div class="smallPostWrapper"> 
         <div class="postExcerptWrapper">
-         {$article.content}
+         <?php echo $this->_var['article']['content']; ?>
         </div>
         <div class="smallPostInfoWrapper"></div>
       </div>
-      <!-- small blog post ends --> 
+       
     </div>
-    <!-- blog posts wrapper ends --> 
+     
     
-    <!-- page numbers start -->
+    
 
-    <!-- page numbers end -->
+    
     
     <div class="footerDecoration"></div>
-    <!-- footer wrapper starts -->
-   <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
-    <!-- footer wrapper ends --> 
+    
+   <?php echo $this->fetch('library/page_footer.lbi'); ?> 
+     
     
   </div>
-  <!-- page wrapper ends --> 
+   
 </div>
-<!-- website wrapper ends -->
+
 </body>
 </html>
 
