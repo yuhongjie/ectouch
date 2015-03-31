@@ -323,10 +323,3 @@ class CategoryModel extends BaseModel {
     }
 
 }
-
-
-
-
-
-
-
